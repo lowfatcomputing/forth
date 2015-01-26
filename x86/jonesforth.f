@@ -585,6 +585,16 @@
 	Note for people reading the code below: DOCOL is a constant word which we defined in the
 	assembler part which returns the value of the assembler symbol of the same name.
 )
+
+HEX 
+
+: DODOES R> LATEST @ >CFA ! ;
+: <BUILDS WORD CREATE 0 , ;
+: DOES> ( - a) ' DODOES , E8 C, (DOES) HERE @ 4+ - , ; IMMEDIATE
+
+DECIMAL
+
+
 : CONSTANT
 	WORD		( get the name (the name follows CONSTANT) )
 	CREATE		( make the dictionary entry )

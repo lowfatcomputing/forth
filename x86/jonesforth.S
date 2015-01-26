@@ -1800,6 +1800,15 @@ _TCFA:
 	movl %edi,var_HERE
 	NEXT
 
+_does:
+PUSHRSP %esi	 // push %esi on to the return stack
+pop %esi	 // point %esi at the does> part
+add $4, %eax	 // push the CFA of the defined word
+push %eax
+NEXT
+
+defconst "(DOES)", 6,,dodoes,_does
+
 /*
 	Because I want to define : (COLON) in FORTH, not assembler, we need a few more FORTH words
 	to use.
